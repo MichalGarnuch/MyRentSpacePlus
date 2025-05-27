@@ -12,4 +12,5 @@ class LocationSeeder extends Seeder
     {
         Location::factory(20)->create();
     }
+
 }

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\MaintenanceRequest;
+use App\Models\Apartment;
 
 class MaintenanceRequestFactory extends Factory
 {

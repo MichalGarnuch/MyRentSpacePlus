@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('amount',10,2);
             $table->enum('type',['rent','owner_rent','media','commission']);
             $table->enum('status',['paid','pending','overdue']);
+            $table->timestamps();
         });
     }
 
