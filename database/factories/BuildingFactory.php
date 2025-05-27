@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Building;
+use App\Models\Location;
+
 
 class BuildingFactory extends Factory
 {

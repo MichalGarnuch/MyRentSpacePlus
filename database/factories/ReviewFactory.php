@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Review;
+use App\Models\RentalAgreement;
+use App\Models\User;
 
 class ReviewFactory extends Factory
 {

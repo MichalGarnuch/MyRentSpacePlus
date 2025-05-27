@@ -23,6 +23,7 @@ return new class extends Migration
             $table->decimal('media_advance',10,2)->nullable();
             $table->decimal('company_commission',10,2)->nullable();
             $table->enum('status',['active','terminated','expired']);
+            $table->timestamps(); // Dodaje created_at i updated_at
         });
     }
 

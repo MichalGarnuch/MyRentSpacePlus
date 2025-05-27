@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\RentalAgreement;
+use App\Models\Apartment;
+use App\Models\Tenant;
+use App\Models\Owner;
 
 class RentalAgreementFactory extends Factory
 {

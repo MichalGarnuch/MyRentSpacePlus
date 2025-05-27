@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\PaymentSchedule;
+use App\Models\RentalAgreement; // ✅ Poprawnie
 
 class PaymentScheduleFactory extends Factory
 {

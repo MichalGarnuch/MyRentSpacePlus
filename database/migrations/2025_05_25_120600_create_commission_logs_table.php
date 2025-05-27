@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('rental_agreement_id')->constrained()->onDelete('cascade');
             $table->decimal('commission_amount', 10, 2);
             $table->date('payment_date');
+            $table->timestamps();
         });
     }
 

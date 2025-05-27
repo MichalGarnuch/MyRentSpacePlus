@@ -4,6 +4,9 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\MediaUsage;
+use App\Models\Apartment;
+use App\Models\RentalAgreement;
+use App\Models\MediaType;
 
 class MediaUsageFactory extends Factory
 {
