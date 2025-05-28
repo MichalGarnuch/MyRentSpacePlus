@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('report_type',['financial','usage','summary']);
             $table->timestamp('generated_at')->useCurrent();
             $table->longText('data');
+            $table->timestamps();
         });
     }
 

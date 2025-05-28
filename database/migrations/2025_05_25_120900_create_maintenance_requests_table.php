@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('request_date');
             $table->enum('status',['open','in_progress','closed']);
+            $table->timestamps();
         });
     }
 

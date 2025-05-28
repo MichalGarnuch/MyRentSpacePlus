@@ -17,7 +17,7 @@ class MediaUsageFactory extends Factory
         return [
             'apartment_id'        => Apartment::factory(),
             'rental_agreement_id' => RentalAgreement::factory(),
-            'media_type_id'       => MediaType::factory(),
+            'media_type_id'       => MediaType::inRandomOrder()->first()->id ?? MediaType::factory(),
             'reading_date'        => $this->faker->date(),
             'value'               => $this->faker->randomFloat(2, 0, 500),
             'archived'            => $this->faker->boolean(10),

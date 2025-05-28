@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('type',['reminder','info','alert']);
             $table->timestamp('sent_at')->useCurrent();
             $table->enum('status',['unread','read']);
+            $table->timestamps();
         });
     }
 

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('media_usage', function (Blueprint $table) {
+        Schema::create('media_usages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('apartment_id')->constrained()->onDelete('cascade');
             $table->foreignId('rental_agreement_id')->constrained()->onDelete('cascade');
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('reading_date');
             $table->decimal('value',10,2);
             $table->boolean('archived')->default(false);
+            $table->timestamps();
         });
     }
 
