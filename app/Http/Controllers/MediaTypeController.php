@@ -2,63 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MediaType;
 use Illuminate\Http\Request;
 
 class MediaTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $types = MediaType::orderBy('name')->get();
+        return view('media_types.index', compact('types'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('media_types.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:100',
+            'unit' => 'required|string|max:50',
+        ]);
+
+        MediaType::create($data);
+
+        return redirect()->route('media_types.index')
+            ->with('success', 'Typ mediów dodany');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(MediaType $mediaType)
     {
-        //
+        return view('media_types.show', compact('mediaType'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(MediaType $mediaType)
     {
-        //
+        return view('media_types.edit', compact('mediaType'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, MediaType $mediaType)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string|max:100',
+            'unit' => 'required|string|max:50',
+        ]);
+
+        $mediaType->update($data);
+
+        return redirect()->route('media_types.index')
+            ->with('success', 'Typ mediów zaktualizowany');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(MediaType $mediaType)
     {
-        //
+        $mediaType->delete();
+        return redirect()->route('media_types.index')
+            ->with('success', 'Typ mediów usunięty');
     }
 }

@@ -2,63 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MediaUsage;
+use App\Models\Apartment;
+use App\Models\RentalAgreement;
+use App\Models\MediaType;
 use Illuminate\Http\Request;
 
 class MediaUsageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $usage = MediaUsage::with(['apartment','rentalAgreement','mediaType'])
+            ->orderBy('reading_date','desc')
+            ->get();
+        return view('media_usage.index', compact('usage'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $apartments      = Apartment::pluck('apartment_number','id');
+        $agreements      = RentalAgreement::pluck('id','id');
+        $mediaTypes      = MediaType::pluck('name','id');
+        return view('media_usage.create', compact('apartments','agreements','mediaTypes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'apartment_id'        => 'required|exists:apartments,id',
+            'rental_agreement_id' => 'nullable|exists:rental_agreements,id',
+            'media_type_id'       => 'required|exists:media_types,id',
+            'reading_date'        => 'required|date',
+            'value'               => 'required|numeric',
+            'archived'            => 'required|boolean',
+        ]);
+
+        MediaUsage::create($data);
+
+        return redirect()->route('media_usage.index')
+            ->with('success', 'Odczyt mediów dodany');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(MediaUsage $mediaUsage)
     {
-        //
+        return view('media_usage.show', compact('mediaUsage'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(MediaUsage $mediaUsage)
     {
-        //
+        $apartments = Apartment::pluck('apartment_number','id');
+        $agreements = RentalAgreement::pluck('id','id');
+        $mediaTypes = MediaType::pluck('name','id');
+        return view('media_usage.edit', compact('mediaUsage','apartments','agreements','mediaTypes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, MediaUsage $mediaUsage)
     {
-        //
+        $data = $request->validate([
+            'apartment_id'        => 'required|exists:apartments,id',
+            'rental_agreement_id' => 'nullable|exists:rental_agreements,id',
+            'media_type_id'       => 'required|exists:media_types,id',
+            'reading_date'        => 'required|date',
+            'value'               => 'required|numeric',
+            'archived'            => 'required|boolean',
+        ]);
+
+        $mediaUsage->update($data);
+
+        return redirect()->route('media_usage.index')
+            ->with('success', 'Odczyt mediów zaktualizowany');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(MediaUsage $mediaUsage)
     {
-        //
+        $mediaUsage->delete();
+        return redirect()->route('media_usage.index')
+            ->with('success', 'Odczyt mediów usunięty');
     }
 }

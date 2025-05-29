@@ -2,63 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RentPayment;
+use App\Models\RentalAgreement;
 use Illuminate\Http\Request;
 
 class RentPaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $payments = RentPayment::with('rentalAgreement')
+            ->orderBy('payment_date','desc')
+            ->get();
+        return view('rent_payments.index', compact('payments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $agreements = RentalAgreement::pluck('id','id');
+        return view('rent_payments.create', compact('agreements'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'rental_agreement_id' => 'required|exists:rental_agreements,id',
+            'payment_date'        => 'required|date',
+            'amount'              => 'required|numeric|min:0',
+            'type'                => 'required|in:rent,owner_rent,media,commission',
+            'status'              => 'required|in:paid,pending,overdue',
+        ]);
+
+        RentPayment::create($data);
+
+        return redirect()->route('rent_payments.index')
+            ->with('success','Płatność dodana');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(RentPayment $rentPayment)
     {
-        //
+        return view('rent_payments.show', compact('rentPayment'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(RentPayment $rentPayment)
     {
-        //
+        $agreements = RentalAgreement::pluck('id','id');
+        return view('rent_payments.edit', compact('rentPayment','agreements'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, RentPayment $rentPayment)
     {
-        //
+        $data = $request->validate([
+            'rental_agreement_id' => 'required|exists:rental_agreements,id',
+            'payment_date'        => 'required|date',
+            'amount'              => 'required|numeric|min:0',
+            'type'                => 'required|in:rent,owner_rent,media,commission',
+            'status'              => 'required|in:paid,pending,overdue',
+        ]);
+
+        $rentPayment->update($data);
+
+        return redirect()->route('rent_payments.index')
+            ->with('success','Płatność zaktualizowana');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(RentPayment $rentPayment)
     {
-        //
+        $rentPayment->delete();
+        return redirect()->route('rent_payments.index')
+            ->with('success','Płatność usunięta');
     }
 }

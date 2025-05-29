@@ -2,63 +2,89 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RentalAgreement;
+use App\Models\Apartment;
+use App\Models\Tenant;
+use App\Models\Owner;
 use Illuminate\Http\Request;
 
 class RentalAgreementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $agreements = RentalAgreement::with(['apartment','tenant','owner'])
+            ->orderBy('start_date','desc')
+            ->get();
+        return view('agreements.index', compact('agreements'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $apartments = Apartment::pluck('apartment_number','id');
+        $tenants    = Tenant::pluck('last_name','id');
+        $owners     = Owner::pluck('last_name','id');
+        return view('agreements.create', compact('apartments','tenants','owners'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'apartment_id'      => 'required|exists:apartments,id',
+            'tenant_id'         => 'required|exists:tenants,id',
+            'owner_id'          => 'required|exists:owners,id',
+            'start_date'        => 'required|date',
+            'end_date'          => 'required|date|after_or_equal:start_date',
+            'rent_amount'       => 'required|numeric',
+            'owner_rent'        => 'nullable|numeric',
+            'media_advance'     => 'nullable|numeric',
+            'company_commission'=> 'nullable|numeric',
+            'status'            => 'required|in:active,terminated,expired',
+        ]);
+
+        RentalAgreement::create($data);
+
+        return redirect()->route('agreements.index')
+            ->with('success', 'Umowa najmu dodana');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(RentalAgreement $agreement)
     {
-        //
+        return view('agreements.show', ['agreement'=>$agreement]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(RentalAgreement $agreement)
     {
-        //
+        $apartments = Apartment::pluck('apartment_number','id');
+        $tenants    = Tenant::pluck('last_name','id');
+        $owners     = Owner::pluck('last_name','id');
+        return view('agreements.edit', compact('agreement','apartments','tenants','owners'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, RentalAgreement $agreement)
     {
-        //
+        $data = $request->validate([
+            'apartment_id'      => 'required|exists:apartments,id',
+            'tenant_id'         => 'required|exists:tenants,id',
+            'owner_id'          => 'required|exists:owners,id',
+            'start_date'        => 'required|date',
+            'end_date'          => 'required|date|after_or_equal:start_date',
+            'rent_amount'       => 'required|numeric',
+            'owner_rent'        => 'nullable|numeric',
+            'media_advance'     => 'nullable|numeric',
+            'company_commission'=> 'nullable|numeric',
+            'status'            => 'required|in:active,terminated,expired',
+        ]);
+
+        $agreement->update($data);
+
+        return redirect()->route('agreements.index')
+            ->with('success', 'Umowa najmu zaktualizowana');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(RentalAgreement $agreement)
     {
-        //
+        $agreement->delete();
+        return redirect()->route('agreements.index')
+            ->with('success', 'Umowa najmu usunięta');
     }
 }

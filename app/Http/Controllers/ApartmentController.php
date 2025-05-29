@@ -2,63 +2,73 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apartment;
+use App\Models\Building;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $apartments = Apartment::with('building.location')->orderBy('apartment_number')->get();
+        return view('apartments.index', compact('apartments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $buildings = Building::with('location')->get();
+        $locations = Location::all();
+        return view('apartments.create', compact('buildings','locations'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'building_id'      => 'required|exists:buildings,id',
+            'apartment_number' => 'required|string|max:50',
+            'floor_number'     => 'required|integer',
+            'size_sqm'         => 'required|numeric',
+            'status'           => 'required|in:available,rented,maintenance',
+        ]);
+
+        Apartment::create($data);
+
+        return redirect()->route('apartments.index')
+            ->with('success', 'Mieszkanie dodane pomyślnie');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Apartment $apartment)
     {
-        //
+        return view('apartments.show', compact('apartment'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Apartment $apartment)
     {
-        //
+        $buildings = Building::with('location')->get();
+        return view('apartments.edit', compact('apartment','buildings'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+        $data = $request->validate([
+            'building_id'      => 'required|exists:buildings,id',
+            'apartment_number' => 'required|string|max:50',
+            'floor_number'     => 'required|integer',
+            'size_sqm'         => 'required|numeric',
+            'status'           => 'required|in:available,rented,maintenance',
+        ]);
+
+        $apartment->update($data);
+
+        return redirect()->route('apartments.index')
+            ->with('success', 'Mieszkanie zaktualizowane');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->delete();
+        return redirect()->route('apartments.index')
+            ->with('success', 'Mieszkanie usunięte');
     }
 }

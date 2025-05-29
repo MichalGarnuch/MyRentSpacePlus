@@ -2,63 +2,66 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class TenantController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $tenants = Tenant::orderBy('last_name')->get();
+        return view('tenants.index', compact('tenants'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('tenants.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name'  => 'required|string|max:100',
+            'phone'      => 'required|string|max:15',
+            'email'      => 'required|email|max:255',
+        ]);
+
+        Tenant::create($data);
+
+        return redirect()->route('tenants.index')
+            ->with('success', 'Najemca dodany pomyślnie');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Tenant $tenant)
     {
-        //
+        return view('tenants.show', compact('tenant'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Tenant $tenant)
     {
-        //
+        return view('tenants.edit', compact('tenant'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Tenant $tenant)
     {
-        //
+        $data = $request->validate([
+            'first_name' => 'required|string|max:100',
+            'last_name'  => 'required|string|max:100',
+            'phone'      => 'required|string|max:15',
+            'email'      => 'required|email|max:255',
+        ]);
+
+        $tenant->update($data);
+
+        return redirect()->route('tenants.index')
+            ->with('success', 'Najemca zaktualizowany');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Tenant $tenant)
     {
-        //
+        $tenant->delete();
+        return redirect()->route('tenants.index')
+            ->with('success', 'Najemca usunięty');
     }
 }

@@ -2,63 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $notifications = Notification::with('user')->orderBy('sent_at', 'desc')->get();
+        return view('notifications.index', compact('notifications'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $users = User::pluck('username', 'id');
+        return view('notifications.create', compact('users'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'message' => 'required|string',
+            'type'    => 'required|in:reminder,info,alert',
+            'status'  => 'nullable|in:unread,read',
+        ]);
+
+        Notification::create($data);
+
+        return redirect()->route('notifications.index')
+            ->with('success', 'Powiadomienie dodane');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Notification $notification)
     {
-        //
+        return view('notifications.show', compact('notification'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Notification $notification)
     {
-        //
+        $users = User::pluck('username', 'id');
+        return view('notifications.edit', compact('notification','users'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Notification $notification)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'message' => 'required|string',
+            'type'    => 'required|in:reminder,info,alert',
+            'status'  => 'required|in:unread,read',
+        ]);
+
+        $notification->update($data);
+
+        return redirect()->route('notifications.index')
+            ->with('success', 'Powiadomienie zaktualizowane');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Notification $notification)
     {
-        //
+        $notification->delete();
+        return redirect()->route('notifications.index')
+            ->with('success', 'Powiadomienie usunięte');
     }
 }

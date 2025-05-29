@@ -2,63 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Owner;
 use Illuminate\Http\Request;
 
 class OwnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $owners = Owner::orderBy('last_name')->get();
+        return view('owners.index', compact('owners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('owners.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'first_name'      => 'required|string|max:100',
+            'last_name'       => 'required|string|max:100',
+            'phone'           => 'required|string|max:15',
+            'email'           => 'required|email|max:255',
+            'commission_rate' => 'required|numeric|min:0',
+        ]);
+
+        Owner::create($data);
+
+        return redirect()->route('owners.index')
+            ->with('success', 'Właściciel dodany pomyślnie');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Owner $owner)
     {
-        //
+        return view('owners.show', compact('owner'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Owner $owner)
     {
-        //
+        return view('owners.edit', compact('owner'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Owner $owner)
     {
-        //
+        $data = $request->validate([
+            'first_name'      => 'required|string|max:100',
+            'last_name'       => 'required|string|max:100',
+            'phone'           => 'required|string|max:15',
+            'email'           => 'required|email|max:255',
+            'commission_rate' => 'required|numeric|min:0',
+        ]);
+
+        $owner->update($data);
+
+        return redirect()->route('owners.index')
+            ->with('success', 'Właściciel zaktualizowany');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Owner $owner)
     {
-        //
+        $owner->delete();
+        return redirect()->route('owners.index')
+            ->with('success', 'Właściciel usunięty');
     }
 }

@@ -2,63 +2,69 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MaintenanceRequest;
+use App\Models\Apartment;
 use Illuminate\Http\Request;
 
 class MaintenanceRequestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $requests = MaintenanceRequest::with('apartment')->orderBy('request_date','desc')->get();
+        return view('maintenance_requests.index', compact('requests'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $apartments = Apartment::pluck('apartment_number','id');
+        return view('maintenance_requests.create', compact('apartments'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'apartment_id' => 'required|exists:apartments,id',
+            'description'  => 'required|string',
+            'request_date' => 'required|date',
+            'status'       => 'required|in:open,in_progress,closed',
+        ]);
+
+        MaintenanceRequest::create($data);
+
+        return redirect()->route('maintenance_requests.index')
+            ->with('success', 'Zgłoszenie serwisowe dodane');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(MaintenanceRequest $maintenanceRequest)
     {
-        //
+        return view('maintenance_requests.show', compact('maintenanceRequest'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(MaintenanceRequest $maintenanceRequest)
     {
-        //
+        $apartments = Apartment::pluck('apartment_number','id');
+        return view('maintenance_requests.edit', compact('maintenanceRequest','apartments'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, MaintenanceRequest $maintenanceRequest)
     {
-        //
+        $data = $request->validate([
+            'apartment_id' => 'required|exists:apartments,id',
+            'description'  => 'required|string',
+            'request_date' => 'required|date',
+            'status'       => 'required|in:open,in_progress,closed',
+        ]);
+
+        $maintenanceRequest->update($data);
+
+        return redirect()->route('maintenance_requests.index')
+            ->with('success', 'Zgłoszenie serwisowe zaktualizowane');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(MaintenanceRequest $maintenanceRequest)
     {
-        //
+        $maintenanceRequest->delete();
+        return redirect()->route('maintenance_requests.index')
+            ->with('success', 'Zgłoszenie serwisowe usunięte');
     }
 }

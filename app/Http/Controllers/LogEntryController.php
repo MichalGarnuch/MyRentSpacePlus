@@ -2,63 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LogEntry;
 use Illuminate\Http\Request;
 
 class LogEntryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $entries = LogEntry::with('user')->orderBy('timestamp', 'desc')->get();
+        return view('logs.index', compact('entries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('logs.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'action'  => 'required|string|max:255',
+            'timestamp' => 'required|date',
+        ]);
+
+        LogEntry::create($data);
+
+        return redirect()->route('logs.index')
+            ->with('success', 'Log entry dodany pomyślnie');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(LogEntry $logEntry)
     {
-        //
+        return view('logs.show', compact('logEntry'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(LogEntry $logEntry)
     {
-        //
+        return view('logs.edit', compact('logEntry'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, LogEntry $logEntry)
     {
-        //
+        $data = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'action'  => 'required|string|max:255',
+            'timestamp' => 'required|date',
+        ]);
+
+        $logEntry->update($data);
+
+        return redirect()->route('logs.index')
+            ->with('success', 'Log entry zaktualizowany pomyślnie');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(LogEntry $logEntry)
     {
-        //
+        $logEntry->delete();
+        return redirect()->route('logs.index')
+            ->with('success', 'Log entry usunięty pomyślnie');
     }
 }
