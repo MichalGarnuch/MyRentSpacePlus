@@ -9,6 +9,8 @@ class MediaType extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function mediaUsages()
     {
         return $this->hasMany(MediaUsage::class);

@@ -9,6 +9,8 @@ class Review extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['tenant_id', 'apartment_id', 'rating', 'comment'];
+
     public function rentalAgreement()
     {
         return $this->belongsTo(RentalAgreement::class);
@@ -17,5 +19,15 @@ class Review extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    public function apartment()
+    {
+        return $this->belongsTo(Apartment::class);
     }
 }

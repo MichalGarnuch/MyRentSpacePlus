@@ -9,6 +9,9 @@ class CommissionLog extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'rental_agreement_id', 'commission_amount', 'commission_date'];
+
     public function rentalAgreement()
     {
         return $this->belongsTo(RentalAgreement::class);

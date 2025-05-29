@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Location extends Model {
     use HasFactory;
-    public function buildings() {
+    protected $fillable = ['name', 'city', 'country'];
+
+    public function buildings()
+    {
         return $this->hasMany(Building::class);
     }
 }

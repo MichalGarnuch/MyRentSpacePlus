@@ -9,6 +9,8 @@ class PaymentSchedule extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['rental_agreement_id', 'due_date', 'amount', 'status'];
+
     public function rentalAgreement()
     {
         return $this->belongsTo(RentalAgreement::class);

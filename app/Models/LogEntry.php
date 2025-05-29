@@ -11,6 +11,7 @@ class LogEntry extends Model
 
     protected $table = 'logs';
 
+    protected $fillable = ['user_id', 'action', 'timestamp'];
     public function user()
     {
         return $this->belongsTo(User::class);
