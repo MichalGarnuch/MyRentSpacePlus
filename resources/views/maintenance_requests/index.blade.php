@@ -1,3 +1,4 @@
+{{-- resources/views/maintenance_requests/index.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -22,12 +23,15 @@
             @forelse($maintenance_requests as $req)
                 <tr>
                     <td>{{ $req->id }}</td>
-                    <td>{{ $req->apartment->apartment_number }}</td>
+                    <td>{{ $req->apartment_id }}</td>
                     <td>{{ $req->description }}</td>
                     <td>{{ $req->request_date->format('Y-m-d') }}</td>
-                    <td>{{ ucfirst(str_replace('_',' ',$req->status)) }}</td>
+                    <td>{{ $req->status }}</td>
                     <td>
-                        <a href="{{ route('maintenance_requests.edit', $req) }}" class="btn btn-sm btn-warning">Edytuj</a>
+                        <a href="{{ route('maintenance_requests.edit', $req) }}" class="btn btn-sm btn-warning">
+                            Edytuj
+                        </a>
+
                         <form action="{{ route('maintenance_requests.destroy', $req) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
@@ -36,7 +40,9 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="6" class="text-center">Brak zgłoszeń serwisowych</td></tr>
+                <tr>
+                    <td colspan="6" class="text-center">Brak zgłoszeń serwisowych</td>
+                </tr>
             @endforelse
             </tbody>
         </table>

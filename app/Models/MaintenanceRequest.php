@@ -15,4 +15,8 @@ class MaintenanceRequest extends Model
     {
         return $this->belongsTo(Apartment::class);
     }
+    protected $casts = [
+        'request_date' => 'date',
+    ];
+
 }

@@ -10,8 +10,8 @@ class MaintenanceRequestController extends Controller
 {
     public function index()
     {
-        $requests = MaintenanceRequest::with('apartment')->orderBy('request_date','desc')->get();
-        return view('maintenance_requests.index', compact('requests'));
+        $maintenance_requests = MaintenanceRequest::with('apartment')->orderBy('request_date','desc')->get();
+        return view('maintenance_requests.index', compact('maintenance_requests'));
     }
 
     public function create()
