@@ -10,18 +10,28 @@ class CommissionLogController extends Controller
 {
     public function index()
     {
-        $logs = CommissionLog::with('rentalAgreement')->orderBy('payment_date', 'desc')->get();
-        return view('commission_logs.index', compact('logs'));
+        // Pobieramy wszystkie wpisy, razem z relacją 'rentalAgreement'
+        $commission_logs = CommissionLog::with('rentalAgreement')
+            ->orderBy('payment_date', 'desc')
+            ->get();
+
+        // Upewniamy się, że widok otrzyma zmienną $commission_logs
+        return view('commission_logs.index', compact('commission_logs'));
     }
 
     public function create()
     {
-        $agreements = RentalAgreement::pluck('id', 'id');
-        return view('commission_logs.create', compact('agreements'));
+        // Pobieramy listę wszystkich umów, żeby zasilić <select>
+        // Klucz i wartość w pluck('id','id') są takie same (możesz też zmienić na bardziej opisowe)
+        $rental_agreements = RentalAgreement::pluck('id', 'id');
+
+        // Przekazujemy widokowi zmienną $rental_agreements
+        return view('commission_logs.create', compact('rental_agreements'));
     }
 
     public function store(Request $request)
     {
+        // Walidacja
         $data = $request->validate([
             'rental_agreement_id' => 'required|exists:rental_agreements,id',
             'commission_amount'   => 'required|numeric',
@@ -31,21 +41,19 @@ class CommissionLogController extends Controller
         CommissionLog::create($data);
 
         return redirect()->route('commission_logs.index')
-            ->with('success', 'Log prowizji dodany');
+            ->with('success', 'Wpis prowizji został dodany.');
     }
 
-    public function show(CommissionLog $commissionLog)
+    public function edit(CommissionLog $commission_log)
     {
-        return view('commission_logs.show', compact('commissionLog'));
+        // Ponownie pobieramy listę umów
+        $rental_agreements = RentalAgreement::pluck('id', 'id');
+
+        // Przekazujemy: pojedynczy $commission_log oraz $rental_agreements
+        return view('commission_logs.edit', compact('commission_log', 'rental_agreements'));
     }
 
-    public function edit(CommissionLog $commissionLog)
-    {
-        $agreements = RentalAgreement::pluck('id','id');
-        return view('commission_logs.edit', compact('commissionLog','agreements'));
-    }
-
-    public function update(Request $request, CommissionLog $commissionLog)
+    public function update(Request $request, CommissionLog $commission_log)
     {
         $data = $request->validate([
             'rental_agreement_id' => 'required|exists:rental_agreements,id',
@@ -53,16 +61,17 @@ class CommissionLogController extends Controller
             'payment_date'        => 'required|date',
         ]);
 
-        $commissionLog->update($data);
+        $commission_log->update($data);
 
         return redirect()->route('commission_logs.index')
-            ->with('success', 'Log prowizji zaktualizowany');
+            ->with('success', 'Wpis prowizji został zaktualizowany.');
     }
 
-    public function destroy(CommissionLog $commissionLog)
+    public function destroy(CommissionLog $commission_log)
     {
-        $commissionLog->delete();
+        $commission_log->delete();
+
         return redirect()->route('commission_logs.index')
-            ->with('success', 'Log prowizji usunięty');
+            ->with('success', 'Wpis prowizji został usunięty.');
     }
 }
