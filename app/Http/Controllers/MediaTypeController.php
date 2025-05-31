@@ -9,8 +9,8 @@ class MediaTypeController extends Controller
 {
     public function index()
     {
-        $types = MediaType::orderBy('name')->get();
-        return view('media_types.index', compact('types'));
+        $media_types = MediaType::orderBy('name')->get();
+        return view('media_types.index', compact('media_types'));
     }
 
     public function create()
