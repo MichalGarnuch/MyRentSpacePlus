@@ -10,7 +10,7 @@ class MediaUsage extends Model
     use HasFactory;
 
     protected $fillable = ['apartment_id', 'rental_agreement_id', 'media_type_id', 'reading_date', 'value', 'archived'];
-
+    protected $casts = ['reading_date' => 'date', 'archived' => 'boolean'];
     public function apartment()
     {
         return $this->belongsTo(Apartment::class);

@@ -12,18 +12,18 @@ class MediaUsageController extends Controller
 {
     public function index()
     {
-        $usage = MediaUsage::with(['apartment','rentalAgreement','mediaType'])
+        $media_usages = MediaUsage::with(['apartment','rentalAgreement','mediaType'])
             ->orderBy('reading_date','desc')
             ->get();
-        return view('media_usage.index', compact('usage'));
+        return view('media_usages.index', compact('media_usages'));
     }
 
     public function create()
     {
         $apartments      = Apartment::pluck('apartment_number','id');
-        $agreements      = RentalAgreement::pluck('id','id');
-        $mediaTypes      = MediaType::pluck('name','id');
-        return view('media_usage.create', compact('apartments','agreements','mediaTypes'));
+        $rental_agreements = RentalAgreement::pluck('id','id');
+        $media_types      = MediaType::pluck('name','id');
+        return view('media_usages.create', compact('apartments','rental_agreements','media_types'));
     }
 
     public function store(Request $request)
@@ -39,21 +39,21 @@ class MediaUsageController extends Controller
 
         MediaUsage::create($data);
 
-        return redirect()->route('media_usage.index')
+        return redirect()->route('media_usages.index')
             ->with('success', 'Odczyt mediów dodany');
     }
 
-    public function show(MediaUsage $mediaUsage)
+    public function show(MediaUsage $media_usage)
     {
-        return view('media_usage.show', compact('mediaUsage'));
+        return view('media_usages.show', compact('media_usage'));
     }
 
     public function edit(MediaUsage $mediaUsage)
     {
         $apartments = Apartment::pluck('apartment_number','id');
-        $agreements = RentalAgreement::pluck('id','id');
-        $mediaTypes = MediaType::pluck('name','id');
-        return view('media_usage.edit', compact('mediaUsage','apartments','agreements','mediaTypes'));
+        $rental_agreements = RentalAgreement::pluck('id','id');
+        $media_types = MediaType::pluck('name','id');
+        return view('media_usages.edit', compact('mediaUsage','apartments','rental_agreements','media_types'));
     }
 
     public function update(Request $request, MediaUsage $mediaUsage)
@@ -69,14 +69,14 @@ class MediaUsageController extends Controller
 
         $mediaUsage->update($data);
 
-        return redirect()->route('media_usage.index')
+        return redirect()->route('media_usages.index')
             ->with('success', 'Odczyt mediów zaktualizowany');
     }
 
     public function destroy(MediaUsage $mediaUsage)
     {
         $mediaUsage->delete();
-        return redirect()->route('media_usage.index')
+        return redirect()->route('media_usages.index')
             ->with('success', 'Odczyt mediów usunięty');
     }
 }
