@@ -10,16 +10,16 @@ class RentPaymentController extends Controller
 {
     public function index()
     {
-        $payments = RentPayment::with('rentalAgreement')
+        $rent_payments = RentPayment::with('rentalAgreement')
             ->orderBy('payment_date','desc')
             ->get();
-        return view('rent_payments.index', compact('payments'));
+        return view('rent_payments.index', compact('rent_payments'));
     }
 
     public function create()
     {
-        $agreements = RentalAgreement::pluck('id','id');
-        return view('rent_payments.create', compact('agreements'));
+        $rental_agreements = RentalAgreement::pluck('id','id');
+        return view('rent_payments.create', compact('rental_agreements'));
     }
 
     public function store(Request $request)
@@ -45,8 +45,8 @@ class RentPaymentController extends Controller
 
     public function edit(RentPayment $rentPayment)
     {
-        $agreements = RentalAgreement::pluck('id','id');
-        return view('rent_payments.edit', compact('rentPayment','agreements'));
+        $rental_agreements = RentalAgreement::pluck('id','id');
+        return view('rent_payments.edit', compact('rentPayment','rental_agreements'));
     }
 
     public function update(Request $request, RentPayment $rentPayment)
