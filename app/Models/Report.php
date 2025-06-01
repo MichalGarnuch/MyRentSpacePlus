@@ -11,6 +11,8 @@ class Report extends Model
 
     protected $fillable = ['user_id', 'content', 'submitted_at'];
 
+    protected $casts = ['generated_at' => 'datetime', 'data' => 'array'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

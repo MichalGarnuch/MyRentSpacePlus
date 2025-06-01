@@ -8,7 +8,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class RentalAgreement extends Model
 {
     use HasFactory;
-    protected $fillable = ['apartment_id', 'tenant_id', 'owner_id', 'start_date', 'end_date', 'monthly_rent'];
+
+    protected $fillable = [
+        'apartment_id',
+        'tenant_id',
+        'owner_id',
+        'start_date',
+        'end_date',
+        'rent_amount',
+        'owner_rent',
+        'media_advance',
+        'company_commission',
+        'status',
+    ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
 
     public function apartment()
     {
