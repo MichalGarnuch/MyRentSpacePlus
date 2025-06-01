@@ -10,16 +10,16 @@ class PaymentScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = PaymentSchedule::with('rentalAgreement')
+        $payment_schedules = PaymentSchedule::with('rentalAgreement')
             ->orderBy('due_date','asc')
             ->get();
-        return view('payment_schedules.index', compact('schedules'));
+        return view('payment_schedules.index', compact('payment_schedules'));
     }
 
     public function create()
     {
-        $agreements = RentalAgreement::pluck('id','id');
-        return view('payment_schedules.create', compact('agreements'));
+        $rental_agreements = RentalAgreement::pluck('id','id');
+        return view('payment_schedules.create', compact('rental_agreements'));
     }
 
     public function store(Request $request)
@@ -38,18 +38,18 @@ class PaymentScheduleController extends Controller
             ->with('success','Harmonogram płatności dodany');
     }
 
-    public function show(PaymentSchedule $paymentSchedule)
+    public function show(PaymentSchedule $payment_schedules)
     {
-        return view('payment_schedules.show', compact('paymentSchedule'));
+        return view('payment_schedules.show', compact('payment_schedules'));
     }
 
     public function edit(PaymentSchedule $paymentSchedule)
     {
-        $agreements = RentalAgreement::pluck('id','id');
-        return view('payment_schedules.edit', compact('paymentSchedule','agreements'));
+        $rental_agreements = RentalAgreement::pluck('id','id');
+        return view('payment_schedules.edit', compact('paymentSchedule','rental_agreements'));
     }
 
-    public function update(Request $request, PaymentSchedule $paymentSchedule)
+    public function update(Request $request, PaymentSchedule $payment_schedules)
     {
         $data = $request->validate([
             'rental_agreement_id' => 'required|exists:rental_agreements,id',
@@ -59,15 +59,15 @@ class PaymentScheduleController extends Controller
             'status'              => 'required|in:pending,paid,overdue',
         ]);
 
-        $paymentSchedule->update($data);
+        $payment_schedules->update($data);
 
         return redirect()->route('payment_schedules.index')
             ->with('success','Harmonogram płatności zaktualizowany');
     }
 
-    public function destroy(PaymentSchedule $paymentSchedule)
+    public function destroy(PaymentSchedule $payment_schedules)
     {
-        $paymentSchedule->delete();
+        $payment_schedules->delete();
         return redirect()->route('payment_schedules.index')
             ->with('success','Harmonogram płatności usunięty');
     }
