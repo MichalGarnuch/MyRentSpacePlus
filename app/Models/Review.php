@@ -10,7 +10,7 @@ class Review extends Model
     use HasFactory;
 
     protected $fillable = ['tenant_id', 'apartment_id', 'rating', 'comment'];
-
+    protected $casts = ['created_at' => 'datetime'];
     public function rentalAgreement()
     {
         return $this->belongsTo(RentalAgreement::class);
