@@ -20,8 +20,8 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LogEntryController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
 // RESTful routes for all controllers
 Route::resources([
