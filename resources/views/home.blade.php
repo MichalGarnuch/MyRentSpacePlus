@@ -8,184 +8,54 @@
         <p class="lead">Wybierz z menu pozycję, aby zarządzać zasobami:</p>
         <hr class="my-4">
 
+        {{-- =======  I rząd kafelków  ======= --}}
         <div class="row">
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('apartments.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-home fa-2x mb-2"></i>
-                            <h5 class="card-title">Mieszkania</h5>
-                            <p class="card-text">Dodawaj, edytuj, usuwaj i przeglądaj mieszkania.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('buildings.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-city fa-2x mb-2"></i>
-                            <h5 class="card-title">Budynki</h5>
-                            <p class="card-text">Zarządzaj budynkami i ich lokalizacjami.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('locations.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-map-marker-alt fa-2x mb-2"></i>
-                            <h5 class="card-title">Lokacje</h5>
-                            <p class="card-text">Przeglądaj i edytuj miasta oraz kody pocztowe.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <x-dashboard.tile route="apartments.index"  icon="fa-home"           title="Mieszkania"
+                              text="Dodawaj, edytuj, usuwaj i przeglądaj mieszkania." />
+            <x-dashboard.tile route="buildings.index"   icon="fa-city"           title="Budynki"
+                              text="Zarządzaj budynkami i ich lokalizacjami." />
+            <x-dashboard.tile route="locations.index"   icon="fa-map-marker-alt" title="Lokacje"
+                              text="Przeglądaj i edytuj miasta oraz kody pocztowe." />
         </div>
 
+        {{-- =======  II rząd kafelków  ======= --}}
         <div class="row mt-3">
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('rental_agreements.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-file-contract fa-2x mb-2"></i>
-                            <h5 class="card-title">Umowy najmu</h5>
-                            <p class="card-text">Zarządzaj wszystkimi umowami najmu.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('rent_payments.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-coins fa-2x mb-2"></i>
-                            <h5 class="card-title">Płatności najmu</h5>
-                            <p class="card-text">Rejestruj i przeglądaj wpłaty od najemców.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('payment_schedules.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-calendar-alt fa-2x mb-2"></i>
-                            <h5 class="card-title">Harmonogramy płatności</h5>
-                            <p class="card-text">Zobacz zaplanowane terminy płatności.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <x-dashboard.tile route="rental_agreements.index" icon="fa-file-contract"
+                              title="Umowy najmu" text="Zarządzaj wszystkimi umowami najmu." />
+            <x-dashboard.tile route="rent_payments.index"     icon="fa-coins"
+                              title="Płatności najmu" text="Rejestruj i przeglądaj wpłaty od najemców." />
+            <x-dashboard.tile route="payment_schedules.index" icon="fa-calendar-alt"
+                              title="Harmonogramy płatności" text="Zobacz zaplanowane terminy płatności." />
         </div>
 
+        {{-- =======  III rząd kafelków  ======= --}}
         <div class="row mt-3">
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('media_types.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-lightbulb fa-2x mb-2"></i>
-                            <h5 class="card-title">Typy mediów</h5>
-                            <p class="card-text">Dodawaj i edytuj typy mediów (Prąd, Gaz, Internet…).</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('media_usages.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-tachometer-alt fa-2x mb-2"></i>
-                            <h5 class="card-title">Odczyty mediów</h5>
-                            <p class="card-text">Rejestruj odczyty zużycia mediów.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('maintenance_requests.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-wrench fa-2x mb-2"></i>
-                            <h5 class="card-title">Zgłoszenia serwisowe</h5>
-                            <p class="card-text">Zarządzaj zgłoszeniami do serwisu.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <x-dashboard.tile route="media_types.index"   icon="fa-lightbulb"
+                              title="Typy mediów" text="Dodawaj i edytuj typy mediów (Prąd, Gaz, Internet…)." />
+            <x-dashboard.tile route="media_usages.index"  icon="fa-tachometer-alt"
+                              title="Odczyty mediów" text="Rejestruj odczyty zużycia mediów." />
+            <x-dashboard.tile route="maintenance_requests.index" icon="fa-wrench"
+                              title="Zgłoszenia serwisowe" text="Zarządzaj zgłoszeniami do serwisu." />
         </div>
 
+        {{-- =======  IV rząd kafelków  ======= --}}
         <div class="row mt-3">
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('commission_logs.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-receipt fa-2x mb-2"></i>
-                            <h5 class="card-title">Logi prowizji</h5>
-                            <p class="card-text">Przeglądaj i dodawaj zapisy prowizji.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('reports.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-chart-line fa-2x mb-2"></i>
-                            <h5 class="card-title">Raporty</h5>
-                            <p class="card-text">Generuj różne raporty (finanse, media…).</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('reviews.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-star fa-2x mb-2"></i>
-                            <h5 class="card-title">Recenzje</h5>
-                            <p class="card-text">Zarządzaj opiniami o nieruchomościach.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <x-dashboard.tile route="commission_logs.index" icon="fa-receipt"
+                              title="Logi prowizji" text="Przeglądaj i dodawaj zapisy prowizji." />
+            <x-dashboard.tile route="reports.index"        icon="fa-chart-line"
+                              title="Raporty" text="Generuj różne raporty (finanse, media…)."/>
+            <x-dashboard.tile route="reviews.index"        icon="fa-star"
+                              title="Recenzje" text="Zarządzaj opiniami o nieruchomościach." />
         </div>
 
+        {{-- =======  V rząd kafelków  ======= --}}
         <div class="row mt-3">
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('users.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-users fa-2x mb-2"></i>
-                            <h5 class="card-title">Użytkownicy</h5>
-                            <p class="card-text">Zarządzaj kontami użytkowników.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('notifications.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-bell fa-2x mb-2"></i>
-                            <h5 class="card-title">Powiadomienia</h5>
-                            <p class="card-text">Przeglądaj i dodawaj notyfikacje.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-4 mb-3">
-                <a href="{{ route('log_entries.index') }}" class="text-decoration-none">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <i class="fa fa-scroll fa-2x mb-2"></i>
-                            <h5 class="card-title">Logi systemu</h5>
-                            <p class="card-text">Historia akcji wykonanych w systemie.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <x-dashboard.tile route="users.index"         icon="fa-users"
+                              title="Użytkownicy" text="Zarządzaj kontami użytkowników." />
+            <x-dashboard.tile route="notifications.index" icon="fa-bell"
+                              title="Powiadomienia" text="Przeglądaj i dodawaj notyfikacje." />
+            <x-dashboard.tile route="log_entries.index"   icon="fa-scroll"
+                              title="Logi systemu" text="Historia akcji wykonanych w systemie." />
         </div>
     </div>
 @endsection

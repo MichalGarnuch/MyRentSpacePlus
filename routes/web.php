@@ -1,45 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ApartmentController;
-use App\Http\Controllers\BuildingController;
-use App\Http\Controllers\CommissionLogController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\MaintenanceRequestController;
-use App\Http\Controllers\MediaTypeController;
-use App\Http\Controllers\MediaUsageController;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\PaymentScheduleController;
-use App\Http\Controllers\RentPaymentController;
-use App\Http\Controllers\RentalAgreementController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\TenantController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\NotificationController;
-use App\Http\Controllers\LogEntryController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProfileController;
 
+// Strona główna (publiczna)
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('welcome');
+});
 
-// RESTful routes for all controllers
-Route::resources([
-    'apartments'           => ApartmentController::class,
-    'buildings'            => BuildingController::class,
-    'commission_logs'      => CommissionLogController::class,
-    'locations'            => LocationController::class,
-    'maintenance_requests' => MaintenanceRequestController::class,
-    'media_types'          => MediaTypeController::class,
-    'media_usages'         => MediaUsageController::class,
-    'owners'               => OwnerController::class,
-    'payment_schedules'    => PaymentScheduleController::class,
-    'rent_payments'        => RentPaymentController::class,
-    'rental_agreements'    => RentalAgreementController::class,
-    'reports'              => ReportController::class,
-    'reviews'              => ReviewController::class,
-    'tenants'              => TenantController::class,
-    'users'                => UserController::class,
-    'notifications'        => NotificationController::class,
-    'log_entries'          => LogEntryController::class,
-]);
+// Panel użytkownika (po zalogowaniu)
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth')->name('dashboard');
+
+// ProfileController jak był
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+});
+
+// Nasz własny auth
+Route::get('login', [LoginController::class, 'showLoginForm'])
+    ->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])
+    ->name('logout');

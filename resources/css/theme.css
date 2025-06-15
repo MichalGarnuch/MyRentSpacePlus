@@ -1,0 +1,43 @@
+/* ----------------------------------------------------
+   Tło całej aplikacji
+---------------------------------------------------- */
+body.app-bg {
+    background: url("/img/background.jpg") center/cover no-repeat fixed;
+}
+
+/* ----------------------------------------------------
+   Sekcje: nagłówek / treść / stopka
+---------------------------------------------------- */
+section.app-section {
+    backdrop-filter: blur(4px);
+    background: rgba(255,255,255,.85);
+    border-radius: .5rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ----------------------------------------------------
+   Logo – zawsze 40×40
+---------------------------------------------------- */
+.navbar-brand img {
+    height: 40px;
+    width: 40px;
+}
+
+/* ----------------------------------------------------
+   Ładne, rozwijane menu
+---------------------------------------------------- */
+.navbar .dropdown-toggle::after {
+    margin-left: .4rem;
+    transition: transform .2s;
+}
+.navbar .show > .dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+.dropdown-menu {
+    animation: fadeDown .25s ease;
+}
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}

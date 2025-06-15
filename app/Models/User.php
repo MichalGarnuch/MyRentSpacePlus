@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail; // Możesz odkomentować, jeśli chcesz weryfikację email
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,6 +27,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username', // DODANE: bo masz to w migracji
+        'role',     // DODANE: bo masz to w migracji
+        'related_id', // DODANE: bo masz to w migracji
     ];
 
     /**
@@ -37,6 +40,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        // 'username', // Możesz dodać, jeśli nie chcesz, aby username było widoczne w serializacji
     ];
 
     /**
@@ -49,6 +53,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => 'string', // Możesz dodać typowanie dla roli jeśli chcesz, np. 'string'
         ];
     }
 
@@ -57,6 +62,9 @@ class User extends Authenticatable
      */
     public function tenant()
     {
+        // Jeśli related_id jest polimorficzne (tenant LUB owner), to ta relacja będzie bardziej złożona.
+        // Jeśli chcesz to uprościć, możesz mieć osobne kolumny tenant_id i owner_id.
+        // Na razie zostawiam, ale pamiętaj o jej złożoności w kontekście related_id.
         return $this->belongsTo(Tenant::class, 'related_id');
     }
 
