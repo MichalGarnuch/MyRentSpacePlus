@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
+    // wersja przed modernizacą na gita
     public function index()
     {
         $apartments = Apartment::with('building.location')->orderBy('apartment_number')->get();
