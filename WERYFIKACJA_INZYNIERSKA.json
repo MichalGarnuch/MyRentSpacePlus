@@ -16,8 +16,12 @@
     {
       "command_or_scope": "php -l zmienionych plików",
       "result": "PASS"
+    },
+    {
+      "command_or_scope": "Pełny vendor/bin/phpunit, 27 testów",
+      "result": "FAIL: 3 błędy i 14 niepowodzeń w istniejących obszarach auth/UI; szczegóły w opisie"
     }
   ],
-  "limitations": "Testy nie obejmują rzeczywistych operacji wszystkich zasobów na bazie ani renderowania wszystkich widoków. Nie wykonano pełnej baterii Laravel i frontend build. Pozostałe istniejące widoki/CRUD wymagają integracyjnego sprawdzenia przed wdrożeniem.",
+  "limitations": "Nowe testy dostępu przechodzą, lecz pełna bateria 27 testów pozostaje nieprzechodząca (3 błędy, 14 niepowodzeń). Brak testów wszystkich CRUD na bazie, browser QA i asset builda. Braki kontraktu kont i widoków wymagają rozwiązania przed wdrożeniem.",
   "production_deployment_performed": false
 }

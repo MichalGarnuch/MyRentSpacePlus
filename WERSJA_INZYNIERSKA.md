@@ -26,6 +26,13 @@ Test HTTP potwierdza przekierowanie gościa i 403 dla najemcy (GET i POST). Drug
 
 Przywrócenie trasy nie dowodzi poprawności każdego istniejącego CRUD. Kolejny etap to test każdego admin flow z migracjami, w szczególności brakujących widoków i powiązań formularzy, walidacja kwot i dat oraz izolacja organizacji. W tym branchu usuwam podstawową niespójność routingu i dostępu, nie deklaruję pełnej gotowości systemu finansowego.
 
+
+## Konfiguracja CI i wynik pełnej baterii
+
+Po publikacji GitHub odrzucił wcześniej istniejący pusty `schedule` w workflow, zanim uruchomił jakikolwiek job. Usunąłem nieważną sekcję. Osobny workflow `Engineering contracts` uruchamia rzeczywiste dwa nowe testy na PHP 8.3 i SQLite. Jego nazwa opisuje zakres; nie oznacza zaliczenia pełnej baterii.
+
+Wykonałem również pełne 27 testów: zestaw nadal ma 3 błędy i 14 niepowodzeń. Wśród przyczyn są brak stanu `unverified` w factory, nieudostępnione ścieżki rejestracji/resetu/weryfikacji i brak manifestu Vite. Nie przywracam publicznej rejestracji tylko po to, aby starszy test Breeze zaświecił się na zielono. Trzeba najpierw ustalić i wdrożyć pełny kontrakt kont. Raport zachowuje te niepowodzenia jako dług do rozwiązania, a nowe testy nie zastępują pełnej baterii.
+
 ## Weryfikacja wykonana w tej sesji
 
 | Sprawdzenie | Wynik i znaczenie |
@@ -33,14 +40,17 @@ Przywrócenie trasy nie dowodzi poprawności każdego istniejącego CRUD. Kolejn
 | PHPUnit --filter EngineeringAccessTest | PASS: 2 testy dostępu i rejestracji tras |
 | php artisan route:list --except-vendor | PASS: rozpoznano kontrolery i trasy |
 | php -l zmienionych plików | PASS |
+| Pełny vendor/bin/phpunit, 27 testów | FAIL: 3 błędy i 14 niepowodzeń w istniejących obszarach auth/UI; szczegóły w opisie |
 
 ### Granice weryfikacji
 
-Testy nie obejmują rzeczywistych operacji wszystkich zasobów na bazie ani renderowania wszystkich widoków. Nie wykonano pełnej baterii Laravel i frontend build. Pozostałe istniejące widoki/CRUD wymagają integracyjnego sprawdzenia przed wdrożeniem.
+Nowe testy dostępu przechodzą, lecz pełna bateria 27 testów pozostaje nieprzechodząca (3 błędy, 14 niepowodzeń). Brak testów wszystkich CRUD na bazie, browser QA i asset builda. Braki kontraktu kont i widoków wymagają rozwiązania przed wdrożeniem.
 
 ## Mapa zmian
 
+- [`.github/workflows/engineering-contracts.yml`](.github/workflows/engineering-contracts.yml)
 - [`tests/Feature/EngineeringAccessTest.php`](tests/Feature/EngineeringAccessTest.php)
+- [`.github/workflows/tests.yml`](.github/workflows/tests.yml)
 - [`app/Http/Controllers/LogEntryController.php`](app/Http/Controllers/LogEntryController.php)
 - [`app/Providers/AppServiceProvider.php`](app/Providers/AppServiceProvider.php)
 - [`resources/views/log_entries/index.blade.php`](resources/views/log_entries/index.blade.php)
