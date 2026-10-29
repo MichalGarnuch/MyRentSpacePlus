@@ -1,0 +1,272 @@
+# MyRentSpacePlus — mapa plików (1/1)
+
+Wykaz śledzonych plików z badanego commita. Liczba wierszy i nazwy deklaracji są wyciągane automatycznie z dostępnej kopii tekstowej; nie oznaczają ręcznej oceny pliku. Brak opisu oznacza, że zawartość nie była analizowana tą metodą (np. plik binarny, zasób lub pominięty plik).
+
+[Wróć do audytu](AUDYT_EDUKACYJNY.md) · [1](AUDYT_MAPA_01.md)
+
+- [.editorconfig](.editorconfig)
+- [.env.example](.env.example)
+- [.gitattributes](.gitattributes)
+- [.github/workflows/issues.yml](.github/workflows/issues.yml) — 12 wierszy
+- [.github/workflows/pull-requests.yml](.github/workflows/pull-requests.yml) — 12 wierszy
+- [.github/workflows/tests.yml](.github/workflows/tests.yml) — 47 wierszy
+- [.github/workflows/update-changelog.yml](.github/workflows/update-changelog.yml) — 13 wierszy
+- [.gitignore](.gitignore)
+- [.styleci.yml](.styleci.yml) — 9 wierszy
+- [CHANGELOG.md](CHANGELOG.md) — 45 wierszy
+- [FETCH_HEAD](FETCH_HEAD)
+- [README.md](README.md) — 61 wierszy
+- [app/Http/Controllers/ApartmentController.php](app/Http/Controllers/ApartmentController.php) — 75 wierszy; deklaracje: `ApartmentController:10`, `index:13`, `create:19`, `store:26`, `show:42`
+- [app/Http/Controllers/Auth/AuthenticatedSessionController.php](app/Http/Controllers/Auth/AuthenticatedSessionController.php) — 47 wierszy; deklaracje: `AuthenticatedSessionController:12`, `create:17`, `store:25`, `destroy:37`
+- [app/Http/Controllers/Auth/ConfirmablePasswordController.php](app/Http/Controllers/Auth/ConfirmablePasswordController.php) — 40 wierszy; deklaracje: `ConfirmablePasswordController:12`, `show:17`, `store:25`
+- [app/Http/Controllers/Auth/EmailVerificationNotificationController.php](app/Http/Controllers/Auth/EmailVerificationNotificationController.php) — 24 wierszy; deklaracje: `EmailVerificationNotificationController:9`, `store:14`
+- [app/Http/Controllers/Auth/EmailVerificationPromptController.php](app/Http/Controllers/Auth/EmailVerificationPromptController.php) — 21 wierszy; deklaracje: `EmailVerificationPromptController:10`, `__invoke:15`
+- [app/Http/Controllers/Auth/LoginController.php](app/Http/Controllers/Auth/LoginController.php) — 55 wierszy; deklaracje: `LoginController:10`, `__construct:12`, `showLoginForm:20`, `login:28`, `logout:48`
+- [app/Http/Controllers/Auth/NewPasswordController.php](app/Http/Controllers/Auth/NewPasswordController.php) — 62 wierszy; deklaracje: `NewPasswordController:16`, `create:21`, `store:31`
+- [app/Http/Controllers/Auth/PasswordController.php](app/Http/Controllers/Auth/PasswordController.php) — 29 wierszy; deklaracje: `PasswordController:11`, `update:16`
+- [app/Http/Controllers/Auth/PasswordResetLinkController.php](app/Http/Controllers/Auth/PasswordResetLinkController.php) — 44 wierszy; deklaracje: `PasswordResetLinkController:11`, `create:16`, `store:26`
+- [app/Http/Controllers/Auth/RegisteredUserController.php](app/Http/Controllers/Auth/RegisteredUserController.php) — 50 wierszy; deklaracje: `RegisteredUserController:15`, `create:20`, `store:30`
+- [app/Http/Controllers/Auth/VerifyEmailController.php](app/Http/Controllers/Auth/VerifyEmailController.php) — 27 wierszy; deklaracje: `VerifyEmailController:10`, `__invoke:15`
+- [app/Http/Controllers/BuildingController.php](app/Http/Controllers/BuildingController.php) — 72 wierszy; deklaracje: `BuildingController:9`, `index:11`, `create:17`, `store:23`, `show:39`
+- [app/Http/Controllers/CommissionLogController.php](app/Http/Controllers/CommissionLogController.php) — 77 wierszy; deklaracje: `CommissionLogController:9`, `index:11`, `create:22`, `store:32`, `edit:47`
+- [app/Http/Controllers/Controller.php](app/Http/Controllers/Controller.php) — 13 wierszy; deklaracje: `Controller:10`
+- [app/Http/Controllers/LocationController.php](app/Http/Controllers/LocationController.php) — 63 wierszy; deklaracje: `LocationController:8`, `index:10`, `create:16`, `store:21`, `show:34`
+- [app/Http/Controllers/LogEntryController.php](app/Http/Controllers/LogEntryController.php) — 65 wierszy; deklaracje: `LogEntryController:8`, `index:10`, `create:16`, `store:21`, `show:35`
+- [app/Http/Controllers/MaintenanceRequestController.php](app/Http/Controllers/MaintenanceRequestController.php) — 70 wierszy; deklaracje: `MaintenanceRequestController:9`, `index:11`, `create:17`, `store:23`, `show:38`
+- [app/Http/Controllers/MediaTypeController.php](app/Http/Controllers/MediaTypeController.php) — 63 wierszy; deklaracje: `MediaTypeController:8`, `index:10`, `create:16`, `store:21`, `show:34`
+- [app/Http/Controllers/MediaUsageController.php](app/Http/Controllers/MediaUsageController.php) — 82 wierszy; deklaracje: `MediaUsageController:11`, `index:13`, `create:21`, `store:29`, `show:46`
+- [app/Http/Controllers/NotificationController.php](app/Http/Controllers/NotificationController.php) — 70 wierszy; deklaracje: `NotificationController:9`, `index:11`, `create:17`, `store:23`, `show:38`
+- [app/Http/Controllers/OwnerController.php](app/Http/Controllers/OwnerController.php) — 69 wierszy; deklaracje: `OwnerController:8`, `index:10`, `create:16`, `store:21`, `show:37`
+- [app/Http/Controllers/PaymentScheduleController.php](app/Http/Controllers/PaymentScheduleController.php) — 74 wierszy; deklaracje: `PaymentScheduleController:9`, `index:11`, `create:19`, `store:25`, `show:41`
+- [app/Http/Controllers/ProfileController.php](app/Http/Controllers/ProfileController.php) — 60 wierszy; deklaracje: `ProfileController:12`, `edit:17`, `update:27`, `destroy:43`
+- [app/Http/Controllers/RentPaymentController.php](app/Http/Controllers/RentPaymentController.php) — 74 wierszy; deklaracje: `RentPaymentController:9`, `index:11`, `create:19`, `store:25`, `show:41`
+- [app/Http/Controllers/RentalAgreementController.php](app/Http/Controllers/RentalAgreementController.php) — 94 wierszy; deklaracje: `RentalAgreementController:11`, `index:13`, `create:22`, `store:31`, `show:52`
+- [app/Http/Controllers/ReportController.php](app/Http/Controllers/ReportController.php) — 73 wierszy; deklaracje: `ReportController:9`, `index:11`, `create:17`, `store:23`, `show:42`
+- [app/Http/Controllers/ReviewController.php](app/Http/Controllers/ReviewController.php) — 75 wierszy; deklaracje: `ReviewController:10`, `index:12`, `create:20`, `store:27`, `show:42`
+- [app/Http/Controllers/TenantController.php](app/Http/Controllers/TenantController.php) — 67 wierszy; deklaracje: `TenantController:8`, `index:10`, `create:16`, `store:21`, `show:36`
+- [app/Http/Controllers/UserController.php](app/Http/Controllers/UserController.php) — 76 wierszy; deklaracje: `UserController:9`, `index:11`, `create:17`, `store:22`, `show:39`
+- [app/Http/Requests/Auth/LoginRequest.php](app/Http/Requests/Auth/LoginRequest.php) — 85 wierszy; deklaracje: `LoginRequest:12`, `authorize:17`, `rules:27`, `authenticate:40`, `ensureIsNotRateLimited:60`
+- [app/Http/Requests/ProfileUpdateRequest.php](app/Http/Requests/ProfileUpdateRequest.php) — 30 wierszy; deklaracje: `ProfileUpdateRequest:9`, `rules:16`
+- [app/Models/Apartment.php](app/Models/Apartment.php) — 31 wierszy; deklaracje: `Apartment:8`, `building:12`, `rentalAgreements:17`, `maintenanceRequests:22`, `mediaUsages:27`
+- [app/Models/Building.php](app/Models/Building.php) — 17 wierszy; deklaracje: `Building:8`, `location:11`, `apartments:14`
+- [app/Models/CommissionLog.php](app/Models/CommissionLog.php) — 27 wierszy; deklaracje: `CommissionLog:8`, `rentalAgreement:23`
+- [app/Models/Location.php](app/Models/Location.php) — 16 wierszy; deklaracje: `Location:8`, `buildings:12`
+- [app/Models/LogEntry.php](app/Models/LogEntry.php) — 20 wierszy; deklaracje: `LogEntry:8`, `user:16`
+- [app/Models/MaintenanceRequest.php](app/Models/MaintenanceRequest.php) — 22 wierszy; deklaracje: `MaintenanceRequest:8`, `apartment:14`
+- [app/Models/MediaType.php](app/Models/MediaType.php) — 18 wierszy; deklaracje: `MediaType:8`, `mediaUsages:14`
+- [app/Models/MediaUsage.php](app/Models/MediaUsage.php) — 28 wierszy; deklaracje: `MediaUsage:8`, `apartment:14`, `rentalAgreement:19`, `mediaType:24`
+- [app/Models/Notification.php](app/Models/Notification.php) — 18 wierszy; deklaracje: `Notification:8`, `user:14`
+- [app/Models/Owner.php](app/Models/Owner.php) — 22 wierszy; deklaracje: `Owner:8`, `rentalAgreements:13`, `user:18`
+- [app/Models/PaymentSchedule.php](app/Models/PaymentSchedule.php) — 18 wierszy; deklaracje: `PaymentSchedule:8`, `rentalAgreement:14`
+- [app/Models/RentPayment.php](app/Models/RentPayment.php) — 18 wierszy; deklaracje: `RentPayment:8`, `rentalAgreement:14`
+- [app/Models/RentalAgreement.php](app/Models/RentalAgreement.php) — 69 wierszy; deklaracje: `RentalAgreement:8`, `apartment:30`, `tenant:35`, `owner:40`, `commissionLogs:45`
+- [app/Models/Report.php](app/Models/Report.php) — 20 wierszy; deklaracje: `Report:8`, `user:16`
+- [app/Models/Review.php](app/Models/Review.php) — 33 wierszy; deklaracje: `Review:8`, `rentalAgreement:14`, `user:19`, `tenant:24`, `apartment:29`
+- [app/Models/Tenant.php](app/Models/Tenant.php) — 22 wierszy; deklaracje: `Tenant:8`, `rentalAgreements:13`, `user:18`
+- [app/Models/User.php](app/Models/User.php) — 95 wierszy; deklaracje: `User:16`, `casts:51`, `tenant:63`, `owner:71`, `logs:76`
+- [app/Providers/AppServiceProvider.php](app/Providers/AppServiceProvider.php) — 24 wierszy; deklaracje: `AppServiceProvider:7`, `register:12`, `boot:20`
+- [app/View/Components/AppLayout.php](app/View/Components/AppLayout.php) — 17 wierszy; deklaracje: `AppLayout:8`, `render:13`
+- [app/View/Components/Dashboard/Tile.php](app/View/Components/Dashboard/Tile.php) — 26 wierszy; deklaracje: `Tile:7`, `__construct:14`, `render:22`
+- [app/View/Components/GuestLayout.php](app/View/Components/GuestLayout.php) — 17 wierszy; deklaracje: `GuestLayout:8`, `render:13`
+- [artisan](artisan)
+- [bootstrap/app.php](bootstrap/app.php) — 18 wierszy
+- [bootstrap/cache/.gitignore](bootstrap/cache/.gitignore)
+- [bootstrap/providers.php](bootstrap/providers.php) — 5 wierszy
+- [composer.json](composer.json) — 76 wierszy
+- [composer.lock](composer.lock)
+- [config/app.php](config/app.php) — 126 wierszy
+- [config/auth.php](config/auth.php) — 115 wierszy
+- [config/cache.php](config/cache.php) — 108 wierszy
+- [config/database.php](config/database.php) — 174 wierszy
+- [config/filesystems.php](config/filesystems.php) — 80 wierszy
+- [config/logging.php](config/logging.php) — 132 wierszy
+- [config/mail.php](config/mail.php) — 118 wierszy
+- [config/queue.php](config/queue.php) — 112 wierszy
+- [config/services.php](config/services.php) — 38 wierszy
+- [config/session.php](config/session.php) — 217 wierszy
+- [database/.gitignore](database/.gitignore)
+- [database/factories/ApartmentFactory.php](database/factories/ApartmentFactory.php) — 30 wierszy; deklaracje: `ApartmentFactory:8`, `definition:20`
+- [database/factories/BuildingFactory.php](database/factories/BuildingFactory.php) — 24 wierszy; deklaracje: `BuildingFactory:10`, `definition:14`
+- [database/factories/CommissionLogFactory.php](database/factories/CommissionLogFactory.php) — 21 wierszy; deklaracje: `CommissionLogFactory:9`, `definition:13`
+- [database/factories/LocationFactory.php](database/factories/LocationFactory.php) — 19 wierszy; deklaracje: `LocationFactory:8`, `definition:12`
+- [database/factories/LogEntryFactory.php](database/factories/LogEntryFactory.php) — 21 wierszy; deklaracje: `LogEntryFactory:9`, `definition:13`
+- [database/factories/MaintenanceRequestFactory.php](database/factories/MaintenanceRequestFactory.php) — 22 wierszy; deklaracje: `MaintenanceRequestFactory:9`, `definition:13`
+- [database/factories/MediaTypeFactory.php](database/factories/MediaTypeFactory.php) — 24 wierszy; deklaracje: `MediaTypeFactory:8`, `definition:12`
+- [database/factories/MediaUsageFactory.php](database/factories/MediaUsageFactory.php) — 26 wierszy; deklaracje: `MediaUsageFactory:11`, `definition:15`
+- [database/factories/NotificationFactory.php](database/factories/NotificationFactory.php) — 23 wierszy; deklaracje: `NotificationFactory:9`, `definition:13`
+- [database/factories/OwnerFactory.php](database/factories/OwnerFactory.php) — 22 wierszy; deklaracje: `OwnerFactory:8`, `definition:12`
+- [database/factories/PaymentScheduleFactory.php](database/factories/PaymentScheduleFactory.php) — 23 wierszy; deklaracje: `PaymentScheduleFactory:9`, `definition:13`
+- [database/factories/RentPaymentFactory.php](database/factories/RentPaymentFactory.php) — 24 wierszy; deklaracje: `RentPaymentFactory:10`, `definition:14`
+- [database/factories/RentalAgreementFactory.php](database/factories/RentalAgreementFactory.php) — 33 wierszy; deklaracje: `RentalAgreementFactory:11`, `definition:15`
+- [database/factories/ReportFactory.php](database/factories/ReportFactory.php) — 26 wierszy; deklaracje: `ReportFactory:9`, `definition:13`
+- [database/factories/ReviewFactory.php](database/factories/ReviewFactory.php) — 24 wierszy; deklaracje: `ReviewFactory:10`, `definition:14`
+- [database/factories/TenantFactory.php](database/factories/TenantFactory.php) — 21 wierszy; deklaracje: `TenantFactory:8`, `definition:12`
+- [database/factories/UserFactory.php](database/factories/UserFactory.php) — 47 wierszy; deklaracje: `UserFactory:10`, `definition:16`
+- [database/migrations/0001_01_01_000001_create_cache_table.php](database/migrations/0001_01_01_000001_create_cache_table.php) — 36 wierszy; deklaracje: `up:12`, `down:31`
+- [database/migrations/0001_01_01_000002_create_jobs_table.php](database/migrations/0001_01_01_000002_create_jobs_table.php) — 57 wierszy; deklaracje: `up:12`, `down:51`
+- [database/migrations/2025_05_25_120000_create_locations_table.php](database/migrations/2025_05_25_120000_create_locations_table.php) — 30 wierszy; deklaracje: `up:12`, `down:26`
+- [database/migrations/2025_05_25_120100_create_buildings_table.php](database/migrations/2025_05_25_120100_create_buildings_table.php) — 33 wierszy; deklaracje: `up:12`, `down:29`
+- [database/migrations/2025_05_25_120200_create_apartments_table.php](database/migrations/2025_05_25_120200_create_apartments_table.php) — 33 wierszy; deklaracje: `up:12`, `down:29`
+- [database/migrations/2025_05_25_120300_create_tenants_table.php](database/migrations/2025_05_25_120300_create_tenants_table.php) — 33 wierszy; deklaracje: `up:12`, `down:29`
+- [database/migrations/2025_05_25_120400_create_owners_table.php](database/migrations/2025_05_25_120400_create_owners_table.php) — 32 wierszy; deklaracje: `up:12`, `down:28`
+- [database/migrations/2025_05_25_120500_create_rental_agreements_table.php](database/migrations/2025_05_25_120500_create_rental_agreements_table.php) — 37 wierszy; deklaracje: `up:12`, `down:33`
+- [database/migrations/2025_05_25_120600_create_commission_logs_table.php](database/migrations/2025_05_25_120600_create_commission_logs_table.php) — 30 wierszy; deklaracje: `up:12`, `down:26`
+- [database/migrations/2025_05_25_120700_create_payment_schedules_table.php](database/migrations/2025_05_25_120700_create_payment_schedules_table.php) — 32 wierszy; deklaracje: `up:12`, `down:28`
+- [database/migrations/2025_05_25_120800_create_rent_payments_table.php](database/migrations/2025_05_25_120800_create_rent_payments_table.php) — 32 wierszy; deklaracje: `up:12`, `down:28`
+- [database/migrations/2025_05_25_120900_create_maintenance_requests_table.php](database/migrations/2025_05_25_120900_create_maintenance_requests_table.php) — 31 wierszy; deklaracje: `up:12`, `down:27`
+- [database/migrations/2025_05_25_121000_create_media_types_table.php](database/migrations/2025_05_25_121000_create_media_types_table.php) — 29 wierszy; deklaracje: `up:12`, `down:25`
+- [database/migrations/2025_05_25_121100_create_media_usages_table.php](database/migrations/2025_05_25_121100_create_media_usages_table.php) — 33 wierszy; deklaracje: `up:12`, `down:29`
+- [database/migrations/2025_05_25_121200_create_users_table.php](database/migrations/2025_05_25_121200_create_users_table.php) — 50 wierszy; deklaracje: `up:12`, `down:46`
+- [database/migrations/2025_05_25_121300_create_reports_table.php](database/migrations/2025_05_25_121300_create_reports_table.php) — 31 wierszy; deklaracje: `up:12`, `down:27`
+- [database/migrations/2025_05_25_121400_create_reviews_table.php](database/migrations/2025_05_25_121400_create_reviews_table.php) — 31 wierszy; deklaracje: `up:12`, `down:27`
+- [database/migrations/2025_05_25_121500_create_notifications_table.php](database/migrations/2025_05_25_121500_create_notifications_table.php) — 32 wierszy; deklaracje: `up:12`, `down:28`
+- [database/migrations/2025_05_25_121600_create_log_entries_table.php](database/migrations/2025_05_25_121600_create_log_entries_table.php) — 30 wierszy; deklaracje: `up:12`, `down:26`
+- [database/migrations/2025_05_26_204853_enlarge_phone_columns_on_tenants_and_owners.php](database/migrations/2025_05_26_204853_enlarge_phone_columns_on_tenants_and_owners.php) — 28 wierszy; deklaracje: `up:12`, `down:22`
+- [database/migrations/2025_05_29_180856_create_sessions_table.php](database/migrations/2025_05_29_180856_create_sessions_table.php) — 31 wierszy; deklaracje: `up:12`, `down:27`
+- [database/seeders/ApartmentSeeder.php](database/seeders/ApartmentSeeder.php) — 15 wierszy; deklaracje: `ApartmentSeeder:9`, `run:11`
+- [database/seeders/BuildingSeeder.php](database/seeders/BuildingSeeder.php) — 15 wierszy; deklaracje: `BuildingSeeder:9`, `run:11`
+- [database/seeders/CommissionLogSeeder.php](database/seeders/CommissionLogSeeder.php) — 15 wierszy; deklaracje: `CommissionLogSeeder:9`, `run:11`
+- [database/seeders/DatabaseSeeder.php](database/seeders/DatabaseSeeder.php) — 20 wierszy; deklaracje: `DatabaseSeeder:9`, `run:14`
+- [database/seeders/DemoDataSeeder.php](database/seeders/DemoDataSeeder.php) — 34 wierszy; deklaracje: `DemoDataSeeder:7`, `run:12`
+- [database/seeders/LocationSeeder.php](database/seeders/LocationSeeder.php) — 16 wierszy; deklaracje: `LocationSeeder:9`, `run:11`
+- [database/seeders/LogEntrySeeder.php](database/seeders/LogEntrySeeder.php) — 15 wierszy; deklaracje: `LogEntrySeeder:9`, `run:11`
+- [database/seeders/MaintenanceRequestSeeder.php](database/seeders/MaintenanceRequestSeeder.php) — 15 wierszy; deklaracje: `MaintenanceRequestSeeder:9`, `run:11`
+- [database/seeders/MediaTypeSeeder.php](database/seeders/MediaTypeSeeder.php) — 16 wierszy; deklaracje: `MediaTypeSeeder:9`, `run:11`
+- [database/seeders/MediaUsageSeeder.php](database/seeders/MediaUsageSeeder.php) — 15 wierszy; deklaracje: `MediaUsageSeeder:9`, `run:11`
+- [database/seeders/NotificationSeeder.php](database/seeders/NotificationSeeder.php) — 15 wierszy; deklaracje: `NotificationSeeder:9`, `run:11`
+- [database/seeders/OwnerSeeder.php](database/seeders/OwnerSeeder.php) — 15 wierszy; deklaracje: `OwnerSeeder:9`, `run:11`
+- [database/seeders/PaymentScheduleSeeder.php](database/seeders/PaymentScheduleSeeder.php) — 15 wierszy; deklaracje: `PaymentScheduleSeeder:9`, `run:11`
+- [database/seeders/RentPaymentSeeder.php](database/seeders/RentPaymentSeeder.php) — 15 wierszy; deklaracje: `RentPaymentSeeder:9`, `run:11`
+- [database/seeders/RentalAgreementSeeder.php](database/seeders/RentalAgreementSeeder.php) — 15 wierszy; deklaracje: `RentalAgreementSeeder:9`, `run:11`
+- [database/seeders/ReportSeeder.php](database/seeders/ReportSeeder.php) — 16 wierszy; deklaracje: `ReportSeeder:9`, `run:11`
+- [database/seeders/ReviewSeeder.php](database/seeders/ReviewSeeder.php) — 15 wierszy; deklaracje: `ReviewSeeder:9`, `run:11`
+- [database/seeders/TenantSeeder.php](database/seeders/TenantSeeder.php) — 15 wierszy; deklaracje: `TenantSeeder:9`, `run:11`
+- [database/seeders/UserSeeder.php](database/seeders/UserSeeder.php) — 13 wierszy; deklaracje: `UserSeeder:7`, `run:9`
+- [git](git)
+- [package-lock.json](package-lock.json) — 3591 wierszy
+- [package.json](package.json) — 21 wierszy
+- [phpunit.xml](phpunit.xml) — 33 wierszy
+- [postcss.config.js](postcss.config.js) — 6 wierszy
+- [public/.htaccess](public/.htaccess)
+- [public/favicon.ico](public/favicon.ico)
+- [public/img/1.jpg](public/img/1.jpg)
+- [public/img/10.jpg](public/img/10.jpg)
+- [public/img/11.jpg](public/img/11.jpg)
+- [public/img/12.jpg](public/img/12.jpg)
+- [public/img/2.jpg](public/img/2.jpg)
+- [public/img/3.jpg](public/img/3.jpg)
+- [public/img/4.jpg](public/img/4.jpg)
+- [public/img/5.jpg](public/img/5.jpg)
+- [public/img/6.jpg](public/img/6.jpg)
+- [public/img/7.jpg](public/img/7.jpg)
+- [public/img/8.jpg](public/img/8.jpg)
+- [public/img/9.jpg](public/img/9.jpg)
+- [public/img/Budynki.jpg](public/img/Budynki.jpg)
+- [public/img/ChatGPT Image 15 cze 2025, 14_04_42.png](public/img/ChatGPT%20Image%2015%20cze%202025%2C%2014_04_42.png)
+- [public/img/background.jpg](public/img/background.jpg)
+- [public/img/hero-bg.jpg](public/img/hero-bg.jpg)
+- [public/img/myrentspace-logo.png](public/img/myrentspace-logo.png)
+- [public/index.php](public/index.php) — 20 wierszy
+- [public/robots.txt](public/robots.txt)
+- [resources/css/app.css](resources/css/app.css) — 3 wierszy
+- [resources/css/theme.css](resources/css/theme.css) — 43 wierszy
+- [resources/js/app.js](resources/js/app.js) — 7 wierszy
+- [resources/js/bootstrap.js](resources/js/bootstrap.js) — 4 wierszy
+- [resources/views/apartments/create.blade.php](resources/views/apartments/create.blade.php) — 37 wierszy
+- [resources/views/apartments/edit.blade.php](resources/views/apartments/edit.blade.php) — 47 wierszy
+- [resources/views/apartments/index.blade.php](resources/views/apartments/index.blade.php) — 37 wierszy
+- [resources/views/auth/confirm-password.blade.php](resources/views/auth/confirm-password.blade.php) — 27 wierszy
+- [resources/views/auth/forgot-password.blade.php](resources/views/auth/forgot-password.blade.php) — 25 wierszy
+- [resources/views/auth/login.blade.php](resources/views/auth/login.blade.php) — 47 wierszy
+- [resources/views/auth/register.blade.php](resources/views/auth/register.blade.php) — 52 wierszy
+- [resources/views/auth/reset-password.blade.php](resources/views/auth/reset-password.blade.php) — 39 wierszy
+- [resources/views/auth/verify-email.blade.php](resources/views/auth/verify-email.blade.php) — 31 wierszy
+- [resources/views/buildings/create.blade.php](resources/views/buildings/create.blade.php) — 56 wierszy
+- [resources/views/buildings/edit.blade.php](resources/views/buildings/edit.blade.php) — 57 wierszy
+- [resources/views/buildings/index.blade.php](resources/views/buildings/index.blade.php) — 46 wierszy
+- [resources/views/commission_logs/create.blade.php](resources/views/commission_logs/create.blade.php) — 68 wierszy
+- [resources/views/commission_logs/edit.blade.php](resources/views/commission_logs/edit.blade.php) — 64 wierszy
+- [resources/views/commission_logs/index.blade.php](resources/views/commission_logs/index.blade.php) — 44 wierszy
+- [resources/views/components/application-logo.blade.php](resources/views/components/application-logo.blade.php) — 3 wierszy
+- [resources/views/components/auth-session-status.blade.php](resources/views/components/auth-session-status.blade.php) — 7 wierszy
+- [resources/views/components/danger-button.blade.php](resources/views/components/danger-button.blade.php) — 3 wierszy
+- [resources/views/components/dashboard/tile.blade.php](resources/views/components/dashboard/tile.blade.php) — 3 wierszy
+- [resources/views/components/dropdown-link.blade.php](resources/views/components/dropdown-link.blade.php) — 1 wierszy
+- [resources/views/components/dropdown.blade.php](resources/views/components/dropdown.blade.php) — 35 wierszy
+- [resources/views/components/input-error.blade.php](resources/views/components/input-error.blade.php) — 9 wierszy
+- [resources/views/components/input-label.blade.php](resources/views/components/input-label.blade.php) — 5 wierszy
+- [resources/views/components/modal.blade.php](resources/views/components/modal.blade.php) — 78 wierszy
+- [resources/views/components/nav-link.blade.php](resources/views/components/nav-link.blade.php) — 11 wierszy
+- [resources/views/components/primary-button.blade.php](resources/views/components/primary-button.blade.php) — 3 wierszy
+- [resources/views/components/responsive-nav-link.blade.php](resources/views/components/responsive-nav-link.blade.php) — 11 wierszy
+- [resources/views/components/secondary-button.blade.php](resources/views/components/secondary-button.blade.php) — 3 wierszy
+- [resources/views/components/text-input.blade.php](resources/views/components/text-input.blade.php) — 3 wierszy
+- [resources/views/dashboard.blade.php](resources/views/dashboard.blade.php) — 17 wierszy
+- [resources/views/dashboard/tile.blade.php](resources/views/dashboard/tile.blade.php) — 11 wierszy
+- [resources/views/home.blade.php](resources/views/home.blade.php) — 61 wierszy
+- [resources/views/layouts/app.blade.php](resources/views/layouts/app.blade.php) — 36 wierszy
+- [resources/views/layouts/guest.blade.php](resources/views/layouts/guest.blade.php) — 30 wierszy
+- [resources/views/layouts/navigation.blade.php](resources/views/layouts/navigation.blade.php) — 100 wierszy
+- [resources/views/locations/create.blade.php](resources/views/locations/create.blade.php) — 34 wierszy
+- [resources/views/locations/edit.blade.php](resources/views/locations/edit.blade.php) — 35 wierszy
+- [resources/views/locations/index.blade.php](resources/views/locations/index.blade.php) — 40 wierszy
+- [resources/views/log_entries/index.blade.php](resources/views/log_entries/index.blade.php) — 42 wierszy
+- [resources/views/maintenance_requests/create.blade.php](resources/views/maintenance_requests/create.blade.php) — 60 wierszy
+- [resources/views/maintenance_requests/edit.blade.php](resources/views/maintenance_requests/edit.blade.php) — 66 wierszy
+- [resources/views/maintenance_requests/index.blade.php](resources/views/maintenance_requests/index.blade.php) — 50 wierszy
+- [resources/views/media_types/create.blade.php](resources/views/media_types/create.blade.php) — 44 wierszy
+- [resources/views/media_types/edit.blade .php](resources/views/media_types/edit.blade%20.php) — 45 wierszy
+- [resources/views/media_types/index.blade.php](resources/views/media_types/index.blade.php) — 40 wierszy
+- [resources/views/media_usages/create.blade.php](resources/views/media_usages/create.blade.php) — 90 wierszy
+- [resources/views/media_usages/edit.blade.php](resources/views/media_usages/edit.blade.php) — 94 wierszy
+- [resources/views/media_usages/index.blade.php](resources/views/media_usages/index.blade.php) — 46 wierszy
+- [resources/views/owners/create.blade.php](resources/views/owners/create.blade.php) — 49 wierszy
+- [resources/views/owners/edit.blade.php](resources/views/owners/edit.blade.php) — 50 wierszy
+- [resources/views/owners/index.blade.php](resources/views/owners/index.blade.php) — 46 wierszy
+- [resources/views/partials/footer.blade.php](resources/views/partials/footer.blade.php) — 3 wierszy
+- [resources/views/partials/header.blade.php](resources/views/partials/header.blade.php) — 10 wierszy
+- [resources/views/payment_schedules/create.blade.php](resources/views/payment_schedules/create.blade.php) — 75 wierszy
+- [resources/views/payment_schedules/edit.blade.php](resources/views/payment_schedules/edit.blade.php) — 77 wierszy
+- [resources/views/payment_schedules/index.blade.php](resources/views/payment_schedules/index.blade.php) — 46 wierszy
+- [resources/views/profile/edit.blade.php](resources/views/profile/edit.blade.php) — 29 wierszy
+- [resources/views/profile/partials/delete-user-form.blade.php](resources/views/profile/partials/delete-user-form.blade.php) — 55 wierszy
+- [resources/views/profile/partials/update-password-form.blade.php](resources/views/profile/partials/update-password-form.blade.php) — 48 wierszy
+- [resources/views/profile/partials/update-profile-information-form.blade.php](resources/views/profile/partials/update-profile-information-form.blade.php) — 64 wierszy
+- [resources/views/rent_payments/create.blade.php](resources/views/rent_payments/create.blade.php) — 75 wierszy
+- [resources/views/rent_payments/edit.blade.php](resources/views/rent_payments/edit.blade.php) — 77 wierszy
+- [resources/views/rent_payments/index.blade.php](resources/views/rent_payments/index.blade.php) — 46 wierszy
+- [resources/views/rental_agreements/create.blade.php](resources/views/rental_agreements/create.blade.php) — 134 wierszy
+- [resources/views/rental_agreements/edit.blade.php](resources/views/rental_agreements/edit.blade.php) — 138 wierszy
+- [resources/views/rental_agreements/index.blade.php](resources/views/rental_agreements/index.blade.php) — 50 wierszy
+- [resources/views/reports/index.blade.php](resources/views/reports/index.blade.php) — 42 wierszy
+- [resources/views/reviews/index.blade.php](resources/views/reviews/index.blade.php) — 46 wierszy
+- [resources/views/tenants/create.blade.php](resources/views/tenants/create.blade.php) — 44 wierszy
+- [resources/views/tenants/edit.blade.php](resources/views/tenants/edit.blade.php) — 45 wierszy
+- [resources/views/tenants/index.blade.php](resources/views/tenants/index.blade.php) — 44 wierszy
+- [resources/views/useres/index.blade.php](resources/views/useres/index.blade.php) — 42 wierszy
+- [resources/views/welcome.blade.php](resources/views/welcome.blade.php) — 277 wierszy
+- [routes/auth.php](routes/auth.php) — 59 wierszy
+- [routes/console.php](routes/console.php) — 8 wierszy
+- [routes/web.php](routes/web.php) — 32 wierszy
+- [storage/app/.gitignore](storage/app/.gitignore)
+- [storage/app/private/.gitignore](storage/app/private/.gitignore)
+- [storage/app/public/.gitignore](storage/app/public/.gitignore)
+- [storage/framework/.gitignore](storage/framework/.gitignore)
+- [storage/framework/cache/.gitignore](storage/framework/cache/.gitignore)
+- [storage/framework/cache/data/.gitignore](storage/framework/cache/data/.gitignore)
+- [storage/framework/sessions/.gitignore](storage/framework/sessions/.gitignore)
+- [storage/framework/testing/.gitignore](storage/framework/testing/.gitignore)
+- [storage/framework/views/.gitignore](storage/framework/views/.gitignore)
+- [storage/logs/.gitignore](storage/logs/.gitignore)
+- [tailwind.config.js](tailwind.config.js) — 21 wierszy
+- [tests/Feature/Auth/AuthenticationTest.php](tests/Feature/Auth/AuthenticationTest.php) — 54 wierszy; deklaracje: `AuthenticationTest:9`, `test_login_screen_can_be_rendered:13`, `test_users_can_authenticate_using_the_login_screen:20`, `test_users_can_not_authenticate_with_invalid_password:33`, `test_users_can_logout:45`
+- [tests/Feature/Auth/EmailVerificationTest.php](tests/Feature/Auth/EmailVerificationTest.php) — 58 wierszy; deklaracje: `EmailVerificationTest:12`, `test_email_verification_screen_can_be_rendered:16`, `test_email_can_be_verified:25`, `test_email_is_not_verified_with_invalid_hash:44`
+- [tests/Feature/Auth/PasswordConfirmationTest.php](tests/Feature/Auth/PasswordConfirmationTest.php) — 44 wierszy; deklaracje: `PasswordConfirmationTest:9`, `test_confirm_password_screen_can_be_rendered:13`, `test_password_can_be_confirmed:22`, `test_password_is_not_confirmed_with_invalid_password:34`
+- [tests/Feature/Auth/PasswordResetTest.php](tests/Feature/Auth/PasswordResetTest.php) — 73 wierszy; deklaracje: `PasswordResetTest:11`, `test_reset_password_link_screen_can_be_rendered:15`, `test_reset_password_link_can_be_requested:22`, `test_reset_password_screen_can_be_rendered:33`, `test_password_can_be_reset_with_valid_token:50`
+- [tests/Feature/Auth/PasswordUpdateTest.php](tests/Feature/Auth/PasswordUpdateTest.php) — 51 wierszy; deklaracje: `PasswordUpdateTest:10`, `test_password_can_be_updated:14`, `test_correct_password_must_be_provided_to_update_password:34`
+- [tests/Feature/Auth/RegistrationTest.php](tests/Feature/Auth/RegistrationTest.php) — 31 wierszy; deklaracje: `RegistrationTest:8`, `test_registration_screen_can_be_rendered:12`, `test_new_users_can_register:19`
+- [tests/Feature/ExampleTest.php](tests/Feature/ExampleTest.php) — 19 wierszy; deklaracje: `ExampleTest:8`, `test_the_application_returns_a_successful_response:13`
+- [tests/Feature/ProfileTest.php](tests/Feature/ProfileTest.php) — 99 wierszy; deklaracje: `ProfileTest:9`, `test_profile_page_is_displayed:13`, `test_profile_information_can_be_updated:24`, `test_email_verification_status_is_unchanged_when_the_email_address_is_unchanged:46`, `test_user_can_delete_their_account:64`
+- [tests/TestCase.php](tests/TestCase.php) — 10 wierszy; deklaracje: `TestCase:7`
+- [tests/Unit/ExampleTest.php](tests/Unit/ExampleTest.php) — 16 wierszy; deklaracje: `ExampleTest:7`, `test_that_true_is_true:12`
+- [vite.config.js](vite.config.js) — 11 wierszy
