@@ -1,0 +1,23 @@
+{
+  "repository": "MyRentSpacePlus",
+  "branch": "wersja-inzynierska-2026",
+  "base_ref": "main",
+  "base_commit": "5328c2bb4490def5ecc148ee1d47dc1a0e79666b",
+  "date": "2026-10-29",
+  "checks": [
+    {
+      "command_or_scope": "PHPUnit --filter EngineeringAccessTest",
+      "result": "PASS: 2 testy dostępu i rejestracji tras"
+    },
+    {
+      "command_or_scope": "php artisan route:list --except-vendor",
+      "result": "PASS: rozpoznano kontrolery i trasy"
+    },
+    {
+      "command_or_scope": "php -l zmienionych plików",
+      "result": "PASS"
+    }
+  ],
+  "limitations": "Testy nie obejmują rzeczywistych operacji wszystkich zasobów na bazie ani renderowania wszystkich widoków. Nie wykonano pełnej baterii Laravel i frontend build. Pozostałe istniejące widoki/CRUD wymagają integracyjnego sprawdzenia przed wdrożeniem.",
+  "production_deployment_performed": false
+}
